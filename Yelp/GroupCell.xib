@@ -7,26 +7,97 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="rfo-ue-sLs" customClass="GroupCell">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="221"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="221"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiH-Yt-gYq">
-                        <rect key="frame" x="117" y="8" width="42" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="OiH-Yt-gYq">
+                        <rect key="frame" x="99" y="14" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="F1m-Ny-IM5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="EXF-Ac-6FZ">
+                        <rect key="frame" x="99" y="43" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="WxK-WF-1QB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="groupDesc"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-H4-u6U">
+                        <rect key="frame" x="0.0" y="220" width="300" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.23000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="EHd-Bt-MJm"/>
+                            <constraint firstAttribute="height" constant="1" id="yif-MI-T5T"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3424" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9D-JB-E2Y">
+                        <rect key="frame" x="37" y="91" width="107" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="reviewCount"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-hr-4FD">
+                        <rect key="frame" x="13" y="91" width="19" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="rating"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tO7-Xg-RAg">
+                        <rect key="frame" x="13" y="14" width="74" height="74"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="74" id="Ma4-WG-od3"/>
+                            <constraint firstAttribute="width" constant="74" id="rnz-nJ-C1B"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="profileImage"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <size key="customSize" width="300" height="49"/>
+            <constraints>
+                <constraint firstItem="tO7-Xg-RAg" firstAttribute="leading" secondItem="rfo-ue-sLs" secondAttribute="leading" constant="13" id="1TC-RL-feZ"/>
+                <constraint firstAttribute="bottom" secondItem="cg1-H4-u6U" secondAttribute="bottom" id="Aut-Du-7oG"/>
+                <constraint firstItem="OiH-Yt-gYq" firstAttribute="top" secondItem="rfo-ue-sLs" secondAttribute="top" constant="14" id="IAD-8C-3gk"/>
+                <constraint firstItem="EXF-Ac-6FZ" firstAttribute="top" secondItem="OiH-Yt-gYq" secondAttribute="bottom" constant="8" id="MHo-Mz-xPN"/>
+                <constraint firstItem="EXF-Ac-6FZ" firstAttribute="leading" secondItem="tO7-Xg-RAg" secondAttribute="trailing" constant="12" id="URy-BO-mBl"/>
+                <constraint firstItem="tO7-Xg-RAg" firstAttribute="top" secondItem="rfo-ue-sLs" secondAttribute="top" constant="14" id="dgO-20-paW"/>
+                <constraint firstItem="cg1-H4-u6U" firstAttribute="leading" secondItem="rfo-ue-sLs" secondAttribute="leading" id="oqq-HP-Mpj"/>
+                <constraint firstItem="OiH-Yt-gYq" firstAttribute="leading" secondItem="tO7-Xg-RAg" secondAttribute="trailing" constant="12" id="xWn-tf-11O"/>
+            </constraints>
+            <size key="customSize" width="300" height="221"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="groupCell"/>
+            </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="label" destination="OiH-Yt-gYq" id="ObM-12-YH6"/>
+                <outlet property="desc" destination="EXF-Ac-6FZ" id="Bj3-vO-9Fo"/>
+                <outlet property="name" destination="OiH-Yt-gYq" id="Qak-LE-crQ"/>
+                <outlet property="profileimg" destination="tO7-Xg-RAg" id="xlh-qy-KyZ"/>
+                <outlet property="rating" destination="B7f-hr-4FD" id="XRS-ts-iGl"/>
+                <outlet property="reviewCount" destination="m9D-JB-E2Y" id="rgR-DJ-wVi"/>
+                <outlet property="reviewCounts" destination="m9D-JB-E2Y" id="ksR-K9-u1t"/>
             </connections>
         </collectionViewCell>
     </objects>

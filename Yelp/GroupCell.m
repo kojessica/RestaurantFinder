@@ -7,6 +7,7 @@
 //
 
 #import "GroupCell.h"
+#import "Group.h"
 
 @implementation GroupCell
 
@@ -27,6 +28,42 @@
     
     return self;
 }
+
+- (void)setGroup:(Group*)group;
+{
+    self.name.text = group.name;
+    self.desc.text = group.desc;
+    self.desc.numberOfLines = 5;
+    
+    int formattedReviewCount = [group.reviewCount floatValue];
+    self.reviewCount.text = [NSString stringWithFormat:@"%d", (int)formattedReviewCount];
+    float formattedRating = [group.rating floatValue];
+    self.rating.text = [NSString stringWithFormat:@"%.01f", (float)formattedRating];
+    
+    NSURL *url = [NSURL URLWithString:group.imageurl];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.profileimg.image = [UIImage imageWithData:imageData];
+        });
+    });
+    
+    CALayer * l = [self.profileimg layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+    
+    /*NSDictionary *options = @{ NSFontAttributeName: self.name.font };
+    CGRect boundingRect = [group.name boundingRectWithSize:CGSizeMake(300.f, NSIntegerMax)
+                                                      options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                   attributes:options context:nil];*/
+    //NSLog(@"%@", NSStringFromCGRect(boundingRect));
+    //NSLog(@"%f", boundingRect.size.height);
+    //NSLog(@"%@", group.reviewCount);
+    //NSLog(@"%@", group.rating);
+    //NSLog(@"%@", group.imageurl);
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

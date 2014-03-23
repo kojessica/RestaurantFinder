@@ -7,22 +7,24 @@
 //
 
 #import "Group.h"
+#import "GroupCell.h"
 
 @interface Group ()
-
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *desc;
-@property (nonatomic, strong) UIImage *profileImage;
 
 @end
 
 @implementation Group
 
--(void) setGroup:(NSDictionary*)group {
+- (id)initWithNSDictionary:(NSDictionary*)group {
     _group = group;
     self.name = group[@"name"];
-    self.desc = group[@"desc"];
-    self.profileImage = group[@"iamge"];
+    self.desc = group[@"snippet_text"];
+    self.desc = [self.desc stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    self.desc = [self.desc stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    self.reviewCount = (NSNumber *)group[@"review_count"];
+    self.rating = (NSNumber *)group[@"rating"];
+    self.imageurl = group[@"image_url"];
+    return self;
 }
 
 @end

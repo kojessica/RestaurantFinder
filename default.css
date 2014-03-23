@@ -1,8 +1,41 @@
-.searchBar {
-    background-color: #fff;
+label {
+    font-family: "ProximaNovaRegular";
+    font-size: 15;
+    color: #333;
+}
+
+text-field {
+    font-family: "ProximaNovaRegular";
+    font-size: 13;
+}
+
+text-view {
+    font-family: "ProximaNovaRegular";
+    font-size: 13;
 }
 
 .navBar {
-    background: red;
-    height: 80px;
+}
+
+.groupDesc {
+    font-size: 11;
+}
+
+.filterButton, .searchButton, .cancelButton {
+    border: 1 solid #ccc;
+    font-size: 11;
+    border-radius: 2;
+    font-family: "ProximaNovaSemibold";
+}
+
+.reviewCount, .rating {
+    font-size: 11;
+}
+
+.profileImage {
+    border-radius: 3;
+}
+
+.settingTable {
+    font-size: 11;
 }

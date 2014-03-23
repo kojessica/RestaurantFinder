@@ -10,7 +10,12 @@
 
 @interface Group : NSObject
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *desc;
+@property (nonatomic, strong) NSNumber *reviewCount;
+@property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) NSString *imageurl;
 @property (nonatomic, strong) NSDictionary *group;
--(void) setGroup:(NSDictionary*)group;
+- (id)initWithNSDictionary:(NSDictionary*)group;
 
 @end
