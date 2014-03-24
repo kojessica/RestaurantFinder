@@ -30,6 +30,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @property (weak, nonatomic) IBOutlet UICollectionView *YelpCollection;
 -(void)openSettings;
 -(void)imgSlideInFromLeft:(UIView *)view;
+-(void)listingsWithTerm:(NSDictionary *)parameters;
 @end
 
 @implementation MainViewController
@@ -39,28 +40,41 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
+    }
+    return self;
+}
+
+- (void)listingsWithTerm:(NSMutableDictionary *)parameters {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if([[parameters objectForKey:@"term"] length] > 0) {
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
         
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            NSLog(@"response: %@", [response objectForKey:@"businesses"]);
+        [self.client searchWithTerm:parameters success:^(AFHTTPRequestOperation *operation, id response) {
+            //NSLog(@"response: %@", [response objectForKey:@"businesses"]);
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             self.groups = [response objectForKey:@"businesses"];
             [self.YelpCollection reloadData];
             
-            NSLog(@"%d", [self.groups count]);
+            //NSLog(@"%d", [self.groups count]);
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error: %@", [error description]);
         }];
-        
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
-    return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    NSLog(@"%@", self.searchParam);
+    [self.searchInput setText:[self.searchParam objectForKey:@"term"]];
+    [self listingsWithTerm:self.searchParam];
+    
     [self.YelpCollection registerClass:[GroupCell class] forCellWithReuseIdentifier:@"GroupCell"];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -78,6 +92,20 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.searchInput) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldDidEndEditing:(UITextField *)textField {
+    [self.searchParam setValue:textField.text forKey:@"term"];
+    [self listingsWithTerm:self.searchParam];
+    return YES;
+}
+
+
 - (void)imgSlideInFromLeft:(UIView *)view
 {
     CATransition *transition = [CATransition animation];
@@ -93,6 +121,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     
     SettingViewController *filterView = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
+    filterView.searchParam = self.searchParam;
     NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:filterView atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];
@@ -104,7 +133,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];
-    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+    [self.client searchWithTerm:self.searchParam success:^(AFHTTPRequestOperation *operation, id response) {
         NSLog(@"response: %@", [response objectForKey:@"businesses"]);
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];

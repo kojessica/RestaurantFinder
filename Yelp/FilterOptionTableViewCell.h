@@ -10,6 +10,6 @@
 
 @interface FilterOptionTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+@property (weak, nonatomic) IBOutlet UILabel *name;
 
 @end

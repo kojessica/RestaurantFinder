@@ -11,5 +11,6 @@
 @interface MainViewController : UIViewController
 
 @property (nonatomic, assign) bool isSearchFirstResponder;
+@property (nonatomic, strong) NSMutableDictionary *searchParam;
 
 @end

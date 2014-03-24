@@ -15,9 +15,17 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //self.window.rootViewController = [[MainViewController alloc] init];
+    NSMutableDictionary *dict =[[NSMutableDictionary alloc] init];//1. using setValue
+    [dict setValue:@"Thai" forKey:@"term"];
+    [dict setValue:@"San Francisco" forKey:@"location"];
+    [dict setValue:@"0" forKey:@"sort"];
+    [dict setValue:@"40000" forKey:@"radius_filter"];
+    [dict setValue:@"restaurants" forKey:@"category_filter"];
+    [dict setValue:@"0" forKey:@"deals_filter"];
     
     MainViewController *mainView = [[MainViewController alloc] init];
+    mainView.searchParam = dict;
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainView];
     self.window.rootViewController = nav;
     nav.navigationBar.hidden = YES;

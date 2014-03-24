@@ -18,6 +18,10 @@
 		12B58B8218DE46F0001CCAB5 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B58B8018DE46F0001CCAB5 /* SettingViewController.xib */; };
 		12B58B8718DE96BC001CCAB5 /* FilterOptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B58B8518DE96BC001CCAB5 /* FilterOptionTableViewCell.m */; };
 		12B58B8818DE96BC001CCAB5 /* FilterOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B58B8618DE96BC001CCAB5 /* FilterOptionTableViewCell.xib */; };
+		12B58B8C18DF8893001CCAB5 /* SegmentFilterOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B58B8A18DF8893001CCAB5 /* SegmentFilterOptionCell.m */; };
+		12B58B8D18DF8893001CCAB5 /* SegmentFilterOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B58B8B18DF8893001CCAB5 /* SegmentFilterOptionCell.xib */; };
+		12B58B9118DF926A001CCAB5 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B58B8F18DF926A001CCAB5 /* SwitchCell.m */; };
+		12B58B9218DF926A001CCAB5 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B58B9018DF926A001CCAB5 /* SwitchCell.xib */; };
 		420474F618DC299500E88E07 /* YelpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 420474F518DC299500E88E07 /* YelpClient.m */; };
 		420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420474F918DC2B2100E88E07 /* MainViewController.m */; };
 		420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420474FA18DC2B2100E88E07 /* MainViewController.xib */; };
@@ -62,6 +66,12 @@
 		12B58B8418DE96BC001CCAB5 /* FilterOptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterOptionTableViewCell.h; sourceTree = "<group>"; };
 		12B58B8518DE96BC001CCAB5 /* FilterOptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterOptionTableViewCell.m; sourceTree = "<group>"; };
 		12B58B8618DE96BC001CCAB5 /* FilterOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterOptionTableViewCell.xib; sourceTree = "<group>"; };
+		12B58B8918DF8893001CCAB5 /* SegmentFilterOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentFilterOptionCell.h; sourceTree = "<group>"; };
+		12B58B8A18DF8893001CCAB5 /* SegmentFilterOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentFilterOptionCell.m; sourceTree = "<group>"; };
+		12B58B8B18DF8893001CCAB5 /* SegmentFilterOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentFilterOptionCell.xib; sourceTree = "<group>"; };
+		12B58B8E18DF926A001CCAB5 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		12B58B8F18DF926A001CCAB5 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		12B58B9018DF926A001CCAB5 /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		420474F418DC299500E88E07 /* YelpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpClient.h; sourceTree = "<group>"; };
 		420474F518DC299500E88E07 /* YelpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpClient.m; sourceTree = "<group>"; };
 		420474F818DC2B2100E88E07 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -128,6 +138,12 @@
 				12B58B8418DE96BC001CCAB5 /* FilterOptionTableViewCell.h */,
 				12B58B8518DE96BC001CCAB5 /* FilterOptionTableViewCell.m */,
 				12B58B8618DE96BC001CCAB5 /* FilterOptionTableViewCell.xib */,
+				12B58B8918DF8893001CCAB5 /* SegmentFilterOptionCell.h */,
+				12B58B8A18DF8893001CCAB5 /* SegmentFilterOptionCell.m */,
+				12B58B8B18DF8893001CCAB5 /* SegmentFilterOptionCell.xib */,
+				12B58B8E18DF926A001CCAB5 /* SwitchCell.h */,
+				12B58B8F18DF926A001CCAB5 /* SwitchCell.m */,
+				12B58B9018DF926A001CCAB5 /* SwitchCell.xib */,
 			);
 			name = "Setting Views";
 			sourceTree = "<group>";
@@ -318,8 +334,10 @@
 				420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */,
 				42FD6C5D18DC286B000BF2B9 /* Images.xcassets in Resources */,
 				12B58B8818DE96BC001CCAB5 /* FilterOptionTableViewCell.xib in Resources */,
+				12B58B9218DF926A001CCAB5 /* SwitchCell.xib in Resources */,
 				12168FF518DCFDCE00E3607A /* ProximaNovaRegular.otf in Resources */,
 				12168FF618DCFDCE00E3607A /* ProximaNovaSemibold.otf in Resources */,
+				12B58B8D18DF8893001CCAB5 /* SegmentFilterOptionCell.xib in Resources */,
 				12168FEB18DCCEF000E3607A /* GroupCell.xib in Resources */,
 				12168FEF18DCDB3000E3607A /* default.css in Resources */,
 				12B58B8218DE46F0001CCAB5 /* SettingViewController.xib in Resources */,
@@ -375,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12B58B8718DE96BC001CCAB5 /* FilterOptionTableViewCell.m in Sources */,
+				12B58B8C18DF8893001CCAB5 /* SegmentFilterOptionCell.m in Sources */,
 				12168FE718DCBD6100E3607A /* GroupCell.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
@@ -382,6 +401,7 @@
 				12168FF218DCDD1800E3607A /* Group.m in Sources */,
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
+				12B58B9118DF926A001CCAB5 /* SwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

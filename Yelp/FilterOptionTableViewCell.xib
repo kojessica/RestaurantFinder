@@ -14,16 +14,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTV-m3-lMY">
-                        <rect key="frame" x="20" y="9" width="81" height="21"/>
+                        <rect key="frame" x="20" y="9" width="280" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="settingCell"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="categoryName" destination="pTV-m3-lMY" id="Lx5-Bx-XD9"/>
                 <outlet property="label" destination="pTV-m3-lMY" id="8YT-q4-Hso"/>
+                <outlet property="name" destination="pTV-m3-lMY" id="L1K-6Z-dFv"/>
             </connections>
         </tableViewCell>
     </objects>

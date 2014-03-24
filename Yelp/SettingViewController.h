@@ -10,4 +10,6 @@
 
 @interface SettingViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableDictionary *searchParam;
+
 @end
