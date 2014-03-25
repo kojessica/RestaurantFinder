@@ -139,7 +139,7 @@
         if (!self.categoryIsCollpased) {
             return [self.arrayCategories count];
         }
-        return 1;
+        return self.indexOfSelectedCategory + 1;
     } else if (section == 2) {
         return 1;
     }
@@ -154,6 +154,13 @@
         }
         return 50;
     } else {
+        if (self.categoryIsCollpased) {
+            if (indexPath.row != self.indexOfSelectedCategory) {
+                return 0;
+            } else {
+                return 40;
+            }
+        }
         return 40;
     }
 }
@@ -183,10 +190,14 @@
         if (indexPath.row == self.indexOfSelectedCategory)
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.hidden = NO;
         }
         else
         {
             cell.accessoryType = UITableViewCellAccessoryNone;
+            if (self.categoryIsCollpased) {
+                cell.hidden = YES;
+            }
         }
         return cell;
         
