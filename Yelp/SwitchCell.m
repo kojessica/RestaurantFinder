@@ -8,11 +8,18 @@
 
 #import "SwitchCell.h"
 
+@interface SwitchCell()
+
+-(void)didChangeValue:(id)sender;
+
+@end
+
 @implementation SwitchCell
 
 - (void)awakeFromNib
 {
     // Initialization code
+    [self.switchControl addTarget:self action:@selector(didChangeValue:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -20,6 +27,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)didChangeValue:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(sender:didChangeValue:)]) {
+        [self.delegate sender:self didChangeValue:self.switchControl.on];
+    }
 }
 
 @end

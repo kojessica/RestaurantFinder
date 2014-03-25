@@ -19,10 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UITableView *filterTable;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-@property (nonatomic, strong) NSMutableDictionary *currentParam;
 
 @property (strong, nonatomic) NSArray *arrayCategories;
 @property (nonatomic, assign) BOOL categoryIsCollpased;
+@property (strong, nonatomic) NSIndexPath *lastIndexPath;
+
 - (void)settingCancel;
 - (void)backToSearch;
 
@@ -42,8 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.currentParam = self.searchParam;
     
+    self.searchParamOld = [[NSMutableDictionary alloc] initWithDictionary:self.searchParam copyItems:YES];
     [self.cancelButton addTarget:self action:@selector(settingCancel) forControlEvents:UIControlEventTouchUpInside];
     [self.searchButton addTarget:self action:@selector(backToSearch) forControlEvents:UIControlEventTouchUpInside];
     
@@ -63,7 +64,7 @@
     UINib *switchCellNib =[UINib nibWithNibName:@"SwitchCell" bundle:nil];
     [self.filterTable registerNib:switchCellNib forCellReuseIdentifier:@"SwitchCell"];
     
-    self.arrayCategories = @[@"food", @"consulting", @"sports", @"tv", @"real estate"];
+    self.arrayCategories = @[@"Active Life", @"Arts & Entertainment", @"Automotive", @"Beauty & Spas", @"Education", @"Event Planning & Services", @"Financial Services", @"Food", @"Health & Medical", @"Home Services", @"Hotels & Travel", @"Local Flavor", @"Local Services", @"Mass Media", @"Nightlife", @"Pets", @"Professional Services", @"Public Services & Government", @"Real Estate", @"Religious Organizations", @"Restaurants"];
     
     self.categoryIsCollpased = YES;
 }
@@ -71,7 +72,9 @@
 - (void)backToSearch
 {
     MainViewController *main = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    main.searchParam = self.searchParam;
+    main.param = self.searchParam;
+    NSLog(@"%@", self.searchParamOld);
+    
     main.isSearchFirstResponder = NO;
     
     [self.navigationController pushViewController:main animated:YES];
@@ -79,9 +82,10 @@
 
 - (void)settingCancel
 {
-    MainViewController *main = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    main.searchParam = self.currentParam;
-    [self.navigationController pushViewController:main animated:YES];
+    MainViewController *mainC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    mainC.param = self.searchParamOld;
+    
+    [self.navigationController pushViewController:mainC animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -101,9 +105,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%d", self.categoryIsCollpased);
     if (indexPath.section == 0) {
-		self.categoryIsCollpased = !self.categoryIsCollpased;
-		[self.filterTable reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        if (self.categoryIsCollpased) {
+            self.categoryIsCollpased = !self.categoryIsCollpased;
+            [self.filterTable reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        } else {
+            self.lastIndexPath = indexPath;
+            [self.filterTable reloadData];
+        }
 	}
 }
 
@@ -146,6 +156,10 @@
     cell.backgroundView = view;
 }
 
+- (void)sender:(SwitchCell *)sender didChangeValue:(BOOL)value {
+    [self.searchParam setObject:@(value) forKey:@"deals_filter"];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -154,7 +168,14 @@
             cell = [[FilterOptionTableViewCell alloc] init];
         }
         cell.name.text = [self.arrayCategories objectAtIndex:indexPath.row];
-        
+        if ([indexPath compare:self.lastIndexPath] == NSOrderedSame)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
         //[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
         
@@ -175,6 +196,9 @@
             
             [cell.segments removeSegmentAtIndex:3 animated:NO];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            cell.segments.selectedSegmentIndex = [[self.searchParam objectForKey:@"sort"] intValue];
+            
             return cell;
             
         } else if (indexPath.row == 1) {
@@ -182,7 +206,7 @@
             if (cell == nil) {
                 cell = [[SegmentFilterOptionCell alloc] init];
             }
-            [cell.segments setTitle:@"0.3 miles" forSegmentAtIndex:0];
+            /*[cell.segments setTitle:@"0.3 miles" forSegmentAtIndex:0];
             [cell.segments setTitle:@"1 mile" forSegmentAtIndex:1];
             [cell.segments setTitle:@"5 miles" forSegmentAtIndex:2];
             [cell.segments setTitle:@"20 miles" forSegmentAtIndex:3];
@@ -193,6 +217,20 @@
             
             cell.segments.frame = CGRectMake(0, 0, 300, 100);
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            int radiusFilterIndex = 0;
+            int radius = [[self.searchParam objectForKey:@"radius_filter"] intValue];
+            if (radius == 500) {
+                radiusFilterIndex = 0;
+            } else if (radius == 1500) {
+                radiusFilterIndex = 1;
+            } else if (radius == 8000) {
+                radiusFilterIndex = 2;
+            } else if (radius == 32000) {
+                radiusFilterIndex = 3;
+            }
+            cell.segments.selectedSegmentIndex = radiusFilterIndex;
+            */
             return cell;
             
         } else if (indexPath.row == 2) {
@@ -200,6 +238,13 @@
             if (cell == nil) {
                 cell = [[SwitchCell alloc] init];
             }
+            cell.delegate = self;
+            if ([[self.searchParam objectForKey:@"deals_filter"] intValue]) {
+                [cell.switchControl setOn:YES animated:NO];
+            } else {
+                [cell.switchControl setOn:NO animated:NO];
+            }
+
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
             
@@ -212,6 +257,7 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
+        
     } else {
         UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"settingCell"];
         if (cell == nil) {

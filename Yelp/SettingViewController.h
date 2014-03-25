@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwitchCell.h"
 
-@interface SettingViewController : UIViewController
+@interface SettingViewController : UIViewController <SwitchCellDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *searchParam;
+@property (nonatomic, strong) NSMutableDictionary *searchParamOld;
 
 @end

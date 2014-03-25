@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SwitchCell : UITableViewCell
+
+@class SwitchCell;
+
+@protocol SwitchCellDelegate <NSObject>
+
+@optional
+-(void)sender:(SwitchCell *)sender didChangeValue:(BOOL)value;
 
 @end
+
+@interface SwitchCell : UITableViewCell <SwitchCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UISwitch *switchControl;
+@property (nonatomic, weak) id<SwitchCellDelegate> delegate;
+
+@end
+

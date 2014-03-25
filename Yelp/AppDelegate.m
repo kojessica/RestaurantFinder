@@ -24,7 +24,7 @@
     [dict setValue:@"0" forKey:@"deals_filter"];
     
     MainViewController *mainView = [[MainViewController alloc] init];
-    mainView.searchParam = dict;
+    mainView.param = dict;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainView];
     self.window.rootViewController = nav;

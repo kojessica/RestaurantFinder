@@ -30,6 +30,9 @@
                     <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="switchCell"/>
                 </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="switchControl" destination="Na5-XS-o7u" id="b9q-kB-RNu"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

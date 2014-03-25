@@ -29,7 +29,6 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @property (weak, nonatomic) IBOutlet UITextField *searchInput;
 @property (weak, nonatomic) IBOutlet UICollectionView *YelpCollection;
 -(void)openSettings;
--(void)imgSlideInFromLeft:(UIView *)view;
 -(void)listingsWithTerm:(NSDictionary *)parameters;
 @end
 
@@ -70,10 +69,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     [super viewDidLoad];
     
-    
-    NSLog(@"%@", self.searchParam);
-    [self.searchInput setText:[self.searchParam objectForKey:@"term"]];
-    [self listingsWithTerm:self.searchParam];
+    //NSLog(@"%@", self.param);
+    [self.searchInput setText:[self.param objectForKey:@"term"]];
+    [self listingsWithTerm:self.param];
     
     [self.YelpCollection registerClass:[GroupCell class] forCellWithReuseIdentifier:@"GroupCell"];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -100,8 +98,8 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 - (BOOL)textFieldDidEndEditing:(UITextField *)textField {
-    [self.searchParam setValue:textField.text forKey:@"term"];
-    [self listingsWithTerm:self.searchParam];
+    [self.param setValue:textField.text forKey:@"term"];
+    [self listingsWithTerm:self.param];
     return YES;
 }
 
@@ -119,21 +117,19 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 - (void)openSettings
 {
-    
     SettingViewController *filterView = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
-    filterView.searchParam = self.searchParam;
+    filterView.searchParam = self.param;
     NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:filterView atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];
     [self.navigationController popViewControllerAnimated:YES];
     
     NSLog(@"%@", self.navigationController);
-    
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];
-    [self.client searchWithTerm:self.searchParam success:^(AFHTTPRequestOperation *operation, id response) {
+    [self.client searchWithTerm:self.param success:^(AFHTTPRequestOperation *operation, id response) {
         NSLog(@"response: %@", [response objectForKey:@"businesses"]);
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
