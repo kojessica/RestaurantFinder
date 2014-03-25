@@ -1,9 +1,9 @@
 label {
-    font-family: "ProximaNovaBold";
+    font-family: "ProximaNovaRegular";
     font-size: 17;
 }
 
-button, segmented-control {
+button, segmented-control, segmented-control label {
     font-weight: bold;
 }
 
@@ -49,7 +49,6 @@ text-view {
 
 .settingTable label {
     font-size: 11;
-    font-family: "ProximaNovaSemibold";
     text-transform: uppercase;
     color: #666;
 }
@@ -65,12 +64,12 @@ text-view {
     background: none;
     text-transform: none;
     font-size: 15;
+    font-weight: bold;
 }
 
 .settingTable .settingCell label {
     font-size: 17;
     text-transform: none;
-    font-family: "ProximaNovaSemibold";
     color: #000;
 }
 
