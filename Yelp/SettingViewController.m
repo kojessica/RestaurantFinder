@@ -153,7 +153,7 @@
             return 45;
         }
         return 50;
-    } else {
+    } else if (indexPath.section == 0) {
         if (self.categoryIsCollpased) {
             if (indexPath.row != self.indexOfSelectedCategory) {
                 return 0;
@@ -161,6 +161,8 @@
                 return 40;
             }
         }
+        return 40;
+    } else {
         return 40;
     }
 }

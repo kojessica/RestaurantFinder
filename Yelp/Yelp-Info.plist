@@ -6,6 +6,7 @@
 	<array>
 		<string>ProximaNovaRegular.otf</string>
 		<string>ProximaNovaSemibold.otf</string>
+		<string>ProximaNovaBold.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

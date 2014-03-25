@@ -36,9 +36,10 @@
     self.desc.numberOfLines = 5;
     
     int formattedReviewCount = [group.reviewCount floatValue];
-    self.reviewCount.text = [NSString stringWithFormat:@"%d", (int)formattedReviewCount];
+    self.reviewCount.text = [NSString stringWithFormat:@"%d\n%@", (int)formattedReviewCount, @"reviews"];
+    
     float formattedRating = [group.rating floatValue];
-    self.rating.text = [NSString stringWithFormat:@"%.01f", (float)formattedRating];
+    self.rating.text = [NSString stringWithFormat:@"%.01f/5\n%@", (float)formattedRating, @"rating"];
     
     NSURL *url = [NSURL URLWithString:group.imageurl];
 

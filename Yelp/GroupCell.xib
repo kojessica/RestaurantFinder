@@ -44,18 +44,25 @@
                             <constraint firstAttribute="height" constant="1" id="yif-MI-T5T"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3424" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9D-JB-E2Y">
-                        <rect key="frame" x="37" y="91" width="107" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3424 reviews" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="65" translatesAutoresizingMaskIntoConstraints="NO" id="m9D-JB-E2Y">
+                        <rect key="frame" x="215" y="63" width="65" height="35"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="D5g-ib-z1q"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="styleClass" value="reviewCount"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-hr-4FD">
-                        <rect key="frame" x="13" y="91" width="19" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="41" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-hr-4FD">
+                        <rect key="frame" x="239" y="14" width="41" height="35"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="41" id="Uth-7Z-78a"/>
+                            <constraint firstAttribute="height" constant="35" id="rwe-PC-afZ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -79,10 +86,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tO7-Xg-RAg" firstAttribute="leading" secondItem="rfo-ue-sLs" secondAttribute="leading" constant="13" id="1TC-RL-feZ"/>
+                <constraint firstAttribute="trailing" secondItem="B7f-hr-4FD" secondAttribute="trailing" constant="20" id="5Qr-Xr-5zM"/>
                 <constraint firstAttribute="bottom" secondItem="cg1-H4-u6U" secondAttribute="bottom" id="Aut-Du-7oG"/>
                 <constraint firstItem="OiH-Yt-gYq" firstAttribute="top" secondItem="rfo-ue-sLs" secondAttribute="top" constant="14" id="IAD-8C-3gk"/>
+                <constraint firstItem="m9D-JB-E2Y" firstAttribute="top" secondItem="B7f-hr-4FD" secondAttribute="bottom" constant="14" id="IV5-P1-yMK"/>
+                <constraint firstItem="B7f-hr-4FD" firstAttribute="top" secondItem="rfo-ue-sLs" secondAttribute="top" constant="14" id="J7Q-1s-jEc"/>
                 <constraint firstItem="EXF-Ac-6FZ" firstAttribute="top" secondItem="OiH-Yt-gYq" secondAttribute="bottom" constant="8" id="MHo-Mz-xPN"/>
                 <constraint firstItem="EXF-Ac-6FZ" firstAttribute="leading" secondItem="tO7-Xg-RAg" secondAttribute="trailing" constant="12" id="URy-BO-mBl"/>
+                <constraint firstAttribute="trailing" secondItem="m9D-JB-E2Y" secondAttribute="trailing" constant="20" id="cLs-rf-nN7"/>
                 <constraint firstItem="tO7-Xg-RAg" firstAttribute="top" secondItem="rfo-ue-sLs" secondAttribute="top" constant="14" id="dgO-20-paW"/>
                 <constraint firstItem="cg1-H4-u6U" firstAttribute="leading" secondItem="rfo-ue-sLs" secondAttribute="leading" id="oqq-HP-Mpj"/>
                 <constraint firstItem="OiH-Yt-gYq" firstAttribute="leading" secondItem="tO7-Xg-RAg" secondAttribute="trailing" constant="12" id="xWn-tf-11O"/>
