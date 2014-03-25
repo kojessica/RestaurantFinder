@@ -119,6 +119,11 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 {
     SettingViewController *filterView = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
     filterView.searchParam = self.param;
+    filterView.indexOfSelectedCategory = self.indexCategory;
+    
+    
+    NSLog(@"were%d", self.indexCategory);
+    
     NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:filterView atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];

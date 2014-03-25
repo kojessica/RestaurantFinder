@@ -25,6 +25,7 @@
     
     MainViewController *mainView = [[MainViewController alloc] init];
     mainView.param = dict;
+    mainView.indexCategory = 20;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainView];
     self.window.rootViewController = nav;

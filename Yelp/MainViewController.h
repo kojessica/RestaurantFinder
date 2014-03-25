@@ -12,5 +12,6 @@
 
 @property (nonatomic, assign) bool isSearchFirstResponder;
 @property (nonatomic, strong) NSMutableDictionary *param;
+@property (nonatomic) int indexCategory;
 
 @end

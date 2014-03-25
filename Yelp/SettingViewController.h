@@ -13,5 +13,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *searchParam;
 @property (nonatomic, strong) NSMutableDictionary *searchParamOld;
+@property (nonatomic) int indexOfSelectedCategory;
+@property (nonatomic) int indexOfSelectedCategoryOld;
 
 @end
